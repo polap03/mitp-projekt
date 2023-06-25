@@ -1,0 +1,24 @@
+ul#ads .ad-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.scrollable-list {
+    max-height: 200px;
+    min-height: 65px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 15px;
+  }
+  
+.scrollable-list .form-check {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    margin-top: 0;
+  }
+  

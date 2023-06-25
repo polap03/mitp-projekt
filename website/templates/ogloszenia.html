@@ -1,0 +1,49 @@
+{% extends "base.html"%}
+{% block title %}Ogłoszenia{% endblock %}
+{% block content %}
+<head>
+    <title>Ogłoszenia</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+{%if user.role == 'organizer' %}
+    <h1 align="center">Dodaj ogłoszenie</h1>
+    </br>
+    <form method="POST" action="{{url_for('views.add_ad')}}">
+        <textarea name="ad" id="ad" class="form-control"></textarea>
+        <br />
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Dodaj</button>
+        </div>
+    </form>
+    </br>
+    <h2 align="center">Ostatnie ogłoszenia</h2>
+    {% if ads %}
+        <ul class="list-group list-group-flush" id="ads">
+            {% for ad in ads %}
+                <li class="list-group-item ad-item">
+                    {{ ad.data }}
+                    <button type="button" class="close" onClick="deleteAd('{{ ad.id }}')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3 align="center">Brak ogłoszeń</h3>
+    {% endif %}
+{% else %}
+    <h1 align="center">Ostatnie ogłoszenia</h1>
+    </br>
+    {% if ads %}
+        <ul class="list-group list-group-flush" id="ads">
+            {% for ad in ads %}
+                <li class="list-group-item ad-item">
+                    {{ ad.data }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3 align="center">Brak ogłoszeń</h3>
+    {% endif %}
+{% endif %}
+{% endblock %}
